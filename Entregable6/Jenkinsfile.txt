@@ -1,0 +1,35 @@
+pipeline {
+    agent { label 'apache-server' }
+
+    stages {
+        stage('Clone Repository') {
+            steps {
+                // Clonar el repositorio en el repositorio raiz de Jenkins
+                sh '''
+                cd /home/jsosa/jenkins
+                git clone https://github.com/nohaynicksdisponibles/bootcamp-devops.git
+                '''
+            }
+        }
+
+        stage('Update Code on Server') {
+            steps {
+                // Hacer pull de la última versión y reemplazar el archivo en el servidor Apache
+                sh '''
+                cd /home/jsosa/jenkins
+                git pull origin main
+                cp index.html /var/www/html/index.html
+                '''
+            }
+        }
+
+        stage('Clean Up') {
+            steps {
+                // Eliminar el directorio clonado
+                sh '''
+                rm -rf /home/jsosa/jenkins/bootcamp-devops
+                '''
+            }
+        }
+    }
+}
