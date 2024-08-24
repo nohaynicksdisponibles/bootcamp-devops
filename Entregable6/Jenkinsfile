@@ -18,7 +18,7 @@ pipeline {
                 sh '''
                 cd /home/jsosa/jenkins/bootcamp-devops
                 git pull origin main
-                cp /Entregable6/index.html /var/www/html/index.html
+                cp /home/jsosa/jenkins/bootcamp-devops/Entregable6/index.html /var/www/html/index.html
                 '''
             }
         }
