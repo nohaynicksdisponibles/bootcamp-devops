@@ -7,6 +7,10 @@ pipeline {
                 // Clonar el repositorio en el repositorio raiz de Jenkins
                 sh '''
                 cd /home/jsosa/jenkins
+		if [ -d "/home/jsosa/jenkins/bootcamp-devops" ]; then
+                    echo "Eliminando el directorio del repositorio existente..."
+                    rm -rf /home/jsosa/jenkins/bootcamp-devops
+                fi
                 git clone https://github.com/nohaynicksdisponibles/bootcamp-devops.git
                 '''
             }
