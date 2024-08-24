@@ -7,9 +7,9 @@ pipeline {
                 // Clonar el repositorio en el repositorio raiz de Jenkins
                 sh '''
                 cd /home/jsosa/jenkins
-		if [ -d "/home/jsosa/jenkins/workspace/bootcamp-devops" ]; then
+		if [ -d "/home/jsosa/jenkins/bootcamp-devops" ]; then
                     echo "Eliminando el directorio del repositorio existente..."
-                    rm -rf /home/jsosa/jenkins/workspace/bootcamp-devops
+                    rm -rf /home/jsosa/jenkins/bootcamp-devops
                 fi
                 git clone https://github.com/nohaynicksdisponibles/bootcamp-devops.git
                 '''
@@ -20,9 +20,9 @@ pipeline {
             steps {
                 // Hacer pull de la última versión y reemplazar el archivo en el servidor Apache
                 sh '''
-                cd /home/jsosa/jenkins/workspace/bootcamp-devops
+                cd /home/jsosa/jenkins/bootcamp-devops
                 git pull origin main
-                cp /home/jsosa/jenkins/bootcamp-devops/workspace/Entregable6/index.html /var/www/html/index.html
+                cp /home/jsosa/jenkins/bootcamp-devops/Entregable6/index.html /var/www/html/index.html
 		sudo systemctl restart apache2
                 '''
             }
@@ -32,7 +32,7 @@ pipeline {
             steps {
                 // Eliminar el directorio clonado
                 sh '''
-                rm -rf /home/jsosa/jenkins/workspace/bootcamp-devops
+                rm -rf /home/jsosa/jenkins/bootcamp-devops
                 '''
             }
         }
