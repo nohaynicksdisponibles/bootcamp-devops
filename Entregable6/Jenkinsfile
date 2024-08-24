@@ -16,9 +16,9 @@ pipeline {
             steps {
                 // Hacer pull de la última versión y reemplazar el archivo en el servidor Apache
                 sh '''
-                cd /home/jsosa/jenkins
+                cd /home/jsosa/jenkins/bootcamp-devops
                 git pull origin main
-                cp index.html /var/www/html/index.html
+                cp /Entregable6/index.html /var/www/html/index.html
                 '''
             }
         }
